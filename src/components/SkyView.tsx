@@ -185,12 +185,14 @@ export function SkyView({
       {/* Moon */}
       {moonVisible ? (
         <g>
-          <MoonPhaseIcon
-            phaseAngle={moonAngle}
-            radius={MOON_SIZE}
-            cx={moonPos.x}
-            cy={moonPos.y}
-          />
+          <g transform={`rotate(${-skyPosition * (180 / Math.PI)}, ${moonPos.x}, ${moonPos.y})`}>
+            <MoonPhaseIcon
+              phaseAngle={moonAngle}
+              radius={MOON_SIZE}
+              cx={moonPos.x}
+              cy={moonPos.y}
+            />
+          </g>
           <text
             x={moonPos.x}
             y={moonPos.y - MOON_SIZE - 6}
