@@ -224,9 +224,10 @@ export function OrbitalView({ moonAngle, observerAngle: obsAngle }: Props) {
       </text>
       <text
         x={CX}
-        y={CY + EARTH_R + 14}
-        fill="#ccc"
-        fontSize="9"
+        y={CY + EARTH_R + 16}
+        fill="white"
+        fontSize="11"
+        fontWeight="bold"
         textAnchor="middle"
       >
         自転 ↺

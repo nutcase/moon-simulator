@@ -2,7 +2,7 @@ import { MoonPhaseIcon } from './MoonPhaseIcon';
 import { dayFactor } from '@/lib/moonMath';
 
 const W = 600;
-const H = 380;
+const H = 390;
 const GROUND_Y = 290;
 const ARC_CX = W / 2;
 const ARC_CY = GROUND_Y;
@@ -232,7 +232,7 @@ export function SkyView({
       )}
 
       {/* Time-of-day indicator bar */}
-      <rect y={GROUND_Y + 45} width={W} height={28} fill="rgba(0,0,0,0.3)" rx="4" />
+      <rect y={GROUND_Y + 42} width={W} height={46} fill="rgba(0,0,0,0.3)" rx="4" />
       {/* Day/night gradient bar */}
       <defs>
         <linearGradient id="timeBar">
@@ -247,25 +247,32 @@ export function SkyView({
       </defs>
       <rect
         x={20}
-        y={GROUND_Y + 49}
+        y={GROUND_Y + 50}
         width={W - 40}
-        height={6}
-        rx="3"
+        height={8}
+        rx="4"
         fill="url(#timeBar)"
-        opacity="0.6"
+        opacity="0.7"
       />
+      {/* Time bar labels */}
+      <text x={20} y={GROUND_Y + 74} fill="#aaa" fontSize="11" textAnchor="start">0時</text>
+      <text x={20 + (W - 40) / 4} y={GROUND_Y + 74} fill="#aaa" fontSize="11" textAnchor="middle">6時</text>
+      <text x={20 + (W - 40) / 2} y={GROUND_Y + 74} fill="#aaa" fontSize="11" textAnchor="middle">12時</text>
+      <text x={20 + (3 * (W - 40)) / 4} y={GROUND_Y + 74} fill="#aaa" fontSize="11" textAnchor="middle">18時</text>
+      <text x={W - 20} y={GROUND_Y + 74} fill="#aaa" fontSize="11" textAnchor="end">24時</text>
       {/* Time marker on bar */}
       {(() => {
         const hour = ((obsAngle / (2 * Math.PI)) * 24 + 12) % 24;
         const barX = 20 + (hour / 24) * (W - 40);
         return (
           <g>
-            <circle cx={barX} cy={GROUND_Y + 52} r={5} fill="white" stroke="#333" strokeWidth="1" />
+            <line x1={barX} y1={GROUND_Y + 47} x2={barX} y2={GROUND_Y + 61} stroke="white" strokeWidth="2" strokeLinecap="round" />
             <text
               x={barX}
-              y={GROUND_Y + 70}
+              y={GROUND_Y + 74}
               fill="white"
-              fontSize="10"
+              fontSize="12"
+              fontWeight="bold"
               textAnchor="middle"
             >
               {`${Math.floor(hour)}時`}
@@ -273,12 +280,6 @@ export function SkyView({
           </g>
         );
       })()}
-      {/* Time bar labels */}
-      <text x={20} y={GROUND_Y + 70} fill="#888" fontSize="9" textAnchor="start">0時</text>
-      <text x={20 + (W - 40) / 4} y={GROUND_Y + 70} fill="#888" fontSize="9" textAnchor="middle">6時</text>
-      <text x={20 + (W - 40) / 2} y={GROUND_Y + 70} fill="#888" fontSize="9" textAnchor="middle">12時</text>
-      <text x={20 + (3 * (W - 40)) / 4} y={GROUND_Y + 70} fill="#888" fontSize="9" textAnchor="middle">18時</text>
-      <text x={W - 20} y={GROUND_Y + 70} fill="#888" fontSize="9" textAnchor="end">24時</text>
     </svg>
   );
 }
