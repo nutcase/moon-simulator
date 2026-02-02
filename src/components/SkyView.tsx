@@ -1,5 +1,5 @@
 import { MoonPhaseIcon } from './MoonPhaseIcon';
-import { dayFactor } from '@/lib/moonMath';
+import { dayFactor, formatHour } from '@/lib/moonMath';
 
 const W = 600;
 const H = 390;
@@ -14,6 +14,7 @@ type Props = {
   observerAngle: number;
   skyPosition: number;
   moonVisible: boolean;
+  hour: number;
 };
 
 function lerpColor(
@@ -56,6 +57,7 @@ export function SkyView({
   observerAngle: obsAngle,
   skyPosition,
   moonVisible,
+  hour,
 }: Props) {
   const df = dayFactor(obsAngle);
   const bg = skyColor(df);
@@ -262,7 +264,6 @@ export function SkyView({
       <text x={W - 20} y={GROUND_Y + 74} fill="#aaa" fontSize="11" textAnchor="end">24時</text>
       {/* Time marker on bar */}
       {(() => {
-        const hour = ((obsAngle / (2 * Math.PI)) * 24 + 12) % 24;
         const barX = 20 + (hour / 24) * (W - 40);
         return (
           <g>
@@ -275,7 +276,7 @@ export function SkyView({
               fontWeight="bold"
               textAnchor="middle"
             >
-              {`${Math.floor(hour)}時`}
+              {formatHour(hour)}
             </text>
           </g>
         );

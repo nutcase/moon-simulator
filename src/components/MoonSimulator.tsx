@@ -97,6 +97,7 @@ export function MoonSimulator() {
             observerAngle={obsAngle}
             skyPosition={skyPos}
             moonVisible={visible}
+            hour={hour}
           />
         </div>
       </div>
