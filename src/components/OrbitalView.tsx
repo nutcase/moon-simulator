@@ -232,18 +232,25 @@ export function OrbitalView({ moonAngle, observerAngle: obsAngle }: Props) {
         自転 ↺
       </text>
 
-      {/* Observer marker */}
-      <circle
-        cx={obs.x}
-        cy={obs.y}
-        r={4}
-        fill="#ff4444"
-        stroke="white"
-        strokeWidth="1.5"
-      />
+      {/* Observer marker (person icon) */}
+      {(() => {
+        const dx = Math.cos(obsAngle);
+        const dy = -Math.sin(obsAngle);
+        const bx = obs.x + dx * 4;
+        const by = obs.y + dy * 4;
+        const rot = -obsAngle * (180 / Math.PI) + 90;
+        return (
+          <g transform={`rotate(${rot}, ${bx}, ${by})`}>
+            {/* Head */}
+            <circle cx={bx} cy={by - 7} r={3.5} fill="#ff4444" />
+            {/* Body (triangle) */}
+            <path d={`M ${bx - 4} ${by + 4} L ${bx} ${by - 3} L ${bx + 4} ${by + 4} Z`} fill="#ff4444" />
+          </g>
+        );
+      })()}
       <text
-        x={obs.x}
-        y={obs.y - 9}
+        x={obs.x + Math.cos(obsAngle) * 28}
+        y={obs.y - Math.sin(obsAngle) * 28}
         fill="#ff6666"
         fontSize="9"
         textAnchor="middle"

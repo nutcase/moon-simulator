@@ -73,10 +73,10 @@ export function MoonSimulator() {
 
   return (
     <div className="max-w-7xl mx-auto">
-      <h1 className="text-2xl md:text-3xl font-bold text-center mb-4 text-white">
+      <h1 className="text-xl md:text-2xl font-bold text-center mb-1 text-white">
         月の動きシミュレーター
       </h1>
-      <p className="text-center text-sm text-gray-400 mb-6">
+      <p className="text-center text-xs text-gray-400 mb-3">
         月齢と時刻を変えて、月の見え方と位置の関係を確認しよう
       </p>
 
