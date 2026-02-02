@@ -257,10 +257,10 @@ export function OrbitalView({ moonAngle, observerAngle: obsAngle }: Props) {
         y1={obs.y}
         x2={moon.x}
         y2={moon.y}
-        stroke="white"
-        strokeWidth="0.8"
-        strokeDasharray="4 4"
-        opacity="0.25"
+        stroke="#ff6666"
+        strokeWidth="1.2"
+        strokeDasharray="6 3"
+        opacity="0.7"
       />
 
       {/* Current moon on orbit: actual illumination (right half lit) */}
