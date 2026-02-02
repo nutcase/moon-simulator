@@ -117,15 +117,15 @@ export function OrbitalView({ moonAngle, observerAngle: obsAngle }: Props) {
         strokeDasharray="5 3"
       />
 
-      {/* Orbital direction arrow */}
+      {/* Orbital direction arrow (counter-clockwise) */}
       <path
-        d={`M ${CX + ORBIT_R * Math.cos(1.2)} ${CY - ORBIT_R * Math.sin(1.2)} A ${ORBIT_R} ${ORBIT_R} 0 0 0 ${CX + ORBIT_R * Math.cos(0.6)} ${CY - ORBIT_R * Math.sin(0.6)}`}
+        d={`M ${CX + ORBIT_R * Math.cos(0.5)} ${CY - ORBIT_R * Math.sin(0.5)} A ${ORBIT_R} ${ORBIT_R} 0 0 0 ${CX + ORBIT_R * Math.cos(1.1)} ${CY - ORBIT_R * Math.sin(1.1)}`}
         fill="none"
         stroke="#e55"
-        strokeWidth="2"
+        strokeWidth="2.5"
         markerEnd="url(#ccwArrow)"
       />
-      <text x="345" y="108" fill="#ccc" fontSize="11" textAnchor="middle">
+      <text x="345" y="115" fill="#ccc" fontSize="11" textAnchor="middle">
         月の公転
       </text>
 
